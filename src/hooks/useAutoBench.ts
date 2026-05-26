@@ -122,7 +122,7 @@ export const useAutoBench = (clientId: string) => {
       
       // Use relative WS URL so Vite proxy forwards to backend automatically
       const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-      const wsUrl = `${protocol}//${window.location.host}/ws?clientId=${clientId}`;
+      const wsUrl = `${protocol}//${window.location.host}/ws-telemetry?clientId=${clientId}`;
       ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 

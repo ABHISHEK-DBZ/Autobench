@@ -92,7 +92,7 @@ const connectionManager = WebSocketConnectionManager.getInstance();
 server.on('upgrade', (request, socket, head) => {
   const pathname = url.parse(request.url || '').pathname;
   
-  if (pathname === '/ws') {
+  if (pathname === '/ws-telemetry') {
     wss.handleUpgrade(request, socket, head, (ws) => {
       const query = url.parse(request.url || '', true).query;
       const clientId = (query.clientId as string) || 'anonymous';
@@ -217,7 +217,7 @@ app.post('/api/ci-gate', (req: express.Request, res: express.Response) => {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-  if (req.path.startsWith('/api') || req.path.startsWith('/ws')) {
+  if (req.path.startsWith('/api') || req.path.startsWith('/ws-telemetry')) {
     return next();
   }
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
@@ -227,6 +227,6 @@ server.listen(PORT, () => {
   console.log(`=======================================================`);
   console.log(`   AutoBench Real-Time Integration Server Running`);
   console.log(`   --> REST API Endpoint: http://localhost:${PORT}`);
-  console.log(`   --> WebSocket Tunnel:  ws://localhost:${PORT}/ws`);
+  console.log(`   --> WebSocket Tunnel:  ws://localhost:${PORT}/ws-telemetry`);
   console.log(`=======================================================`);
 });

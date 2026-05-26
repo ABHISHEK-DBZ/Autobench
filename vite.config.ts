@@ -14,9 +14,10 @@ export default defineConfig({
         target: 'http://localhost:5000',
         changeOrigin: true,
       },
-      '/ws': {
+      '/ws-telemetry': {
         target: 'ws://localhost:5000',
         ws: true,
+        changeOrigin: true,
       },
     },
   },
