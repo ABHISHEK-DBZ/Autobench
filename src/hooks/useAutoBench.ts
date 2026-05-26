@@ -168,12 +168,13 @@ export const useAutoBench = (clientId: string) => {
         clearTimeout(reconnectTimeout);
       }
       if (ws) {
-        if (ws.readyState === WebSocket.OPEN) {
-          ws.close(1000, 'Component unmounted safely');
-        } else if (ws.readyState === WebSocket.CONNECTING) {
-          ws.onopen = () => {
+        const socket = ws;
+        if (socket.readyState === WebSocket.OPEN) {
+          socket.close(1000, 'Component unmounted safely');
+        } else if (socket.readyState === WebSocket.CONNECTING) {
+          socket.onopen = () => {
             try {
-              ws.close(1000, 'Component unmounted safely');
+              socket.close(1000, 'Component unmounted safely');
             } catch (e) {}
           };
         }
