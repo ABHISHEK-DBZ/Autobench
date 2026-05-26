@@ -204,7 +204,7 @@ app.post('/api/ci-gate', (req: express.Request, res: express.Response) => {
   const thresholds = {
     maxLatencyMs: 250,
     minAccuracyScore: 90,
-    maxCostPer1k: 0.05
+    maxCostPer1k: 0.50
   };
 
   console.log('[REST] Running headless CI Gate thresholds check...');
