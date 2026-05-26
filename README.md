@@ -141,4 +141,4 @@ npm run build
 ## 💎 Designed & Engineered by
 
 Designed & Engineered with ❤️ by **Abhishek Jha**.  
-Built using the elite **Google DeepMind Antigravity** framework.
+
